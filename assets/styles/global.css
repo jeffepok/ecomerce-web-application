@@ -20,7 +20,16 @@ body{
 .bg-grey{
     background-color: #e0e0e0;
 }
+.bg-light-grey{
+    background-color: #e4e4e4;;
+}
+.bg-dark-grey{
+    background-color: #b9b9b9;
+}
 /* Text colors */
+.text-navy-blue{
+    color:#002b5c;
+}
 .text-dark-pink{
     color: #d63855;
 }
@@ -37,6 +46,12 @@ body{
     line-height: 1.25rem/* 20px */;
 }
 .text-normal {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.text-bold{
+    font-weight: 700;
     font-size: 1rem;
     line-height: 1.5rem;
 }
@@ -48,13 +63,22 @@ body{
     font-size: 1.25rem;
     line-height: 1.75rem;
 }
+.text-2x{
+    font-size: 2rem;
+    line-height: 1.85rem;
+}
 
 .uppercase {
     text-transform: uppercase;
 }
+.strikethrough {
+    text-decoration: line-through;
+}
 
 /* for components */
-.round{
+.sphere{
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
 }
 .no-border{
@@ -62,6 +86,16 @@ body{
 }
 .w-full{
     width: 100%;
+    margin:8px;
+}
+.w-88{
+    width:88%;
+}
+.w-20{
+    width: 20px;
+}
+.w-60{
+    width: 60px;
 }
 
 /* Alignments */
@@ -73,6 +107,7 @@ body{
 }
 .flex{
     display: flex;
+    
 }
 .flex-wrap{
     flex-wrap: wrap;
@@ -87,13 +122,34 @@ body{
 .margin-0{
     margin:0;
 }
+.margin-y-5{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.margin-y-8{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.margin-x-5{
+    margin-right: 5px;
+}
+
 .text-align-center{
     text-align: center;
+}
+.vertical-center{
+    text-align: center;
     align-items: center;
-    /* display:flex; */
+    display:flex;
 }
 .paddings{
-    padding: 6px;
+    padding: 2px;
+}
+.no-paddings{
+    padding: 0px;
+}
+.auto-margin{
+    margin: auto;
 }
 /* General */
 a{
