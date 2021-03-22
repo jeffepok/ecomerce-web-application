@@ -1,0 +1,104 @@
+/* Body */
+body{
+    font-family:
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji';
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Colors */
+/* backgound colors */
+.bg-navy-blue{
+    background-color: #002b5c;
+}
+.bg-grey{
+    background-color: #e0e0e0;
+}
+/* Text colors */
+.text-dark-pink{
+    color: #d63855;
+}
+.text-dark-grey{
+    color:#717171;
+}
+.text-white{
+    color: white;
+}
+
+/* Text */
+.text-sm {
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+}
+.text-normal {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* for components */
+.round{
+    border-radius: 50%;
+}
+.no-border{
+    border: none;
+}
+.w-full{
+    width: 100%;
+}
+
+/* Alignments */
+.float-right{
+    float: right;
+}
+.float-left{
+    float: left;
+}
+.flex{
+    display: flex;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.relative{
+    position: relative;
+}
+.absolute-left-top{
+    position: absolute;
+    left:0;
+}
+.margin-0{
+    margin:0;
+}
+.text-align-center{
+    text-align: center;
+    align-items: center;
+    /* display:flex; */
+}
+.paddings{
+    padding: 6px;
+}
+/* General */
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}

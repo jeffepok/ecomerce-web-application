@@ -1,0 +1,28 @@
+.productAreaContainer{
+    border:1px solid red;
+    width: 100%;
+    margin: 200px auto;
+}
+.productArea{
+    border:1px solid blue;
+    width: 90%;
+}
+#bigPic{
+    border: 1px solid green;
+}
+.thumbnails{
+    border: 1px solid yellow;
+}
+.orderDetials{
+    border: 1px solid rgb(0, 0, 0);
+}
+.grid-2{
+    width: 80%;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+img{
+    width:600px;
+}
