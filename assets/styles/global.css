@@ -26,6 +26,9 @@ body{
 .bg-dark-grey{
     background-color: #b9b9b9;
 }
+.bg-white{
+    background-color: white;
+}
 
 .border-navy-blue{
     border: 1px solid #002b5c;
@@ -109,6 +112,9 @@ body{
 .w-60{
     width: 60px;
 }
+.logo-width{
+    width: 130px;
+}
 
 /* Alignments */
 .float-right{
@@ -142,6 +148,9 @@ body{
 .margin-0{
     margin:0;
 }
+.margin-top-lg{
+    margin-top: 120px;
+}
 .margin-top-25{
     margin-top: 25px;
 }
@@ -170,6 +179,9 @@ body{
 }
 .paddings-m{
     padding: 30px;
+}
+.paddings-sm{
+    padding: 20px;
 }
 .no-paddings{
     padding: 0px;
