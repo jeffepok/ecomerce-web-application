@@ -81,6 +81,11 @@ body{
     height: 60px;
     border-radius: 50%;
 }
+.sphere-sm{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
 .no-border{
     border: none;
 }
