@@ -1,5 +1,4 @@
 .productAreaContainer{
-    border:1px solid red;
     margin: 200px auto;
 }
 
@@ -8,7 +7,7 @@
 .grid-2{
     width: 90%;
     display: grid;
-    margin: 200px auto;
+    margin: 15px auto;
     grid-template-columns: 1.5fr 1fr;
     column-gap: 30px;
 }
@@ -27,11 +26,35 @@
 .size-tab:focus{
     background-color:#002b5c;
 }
-/* Select */
+/* Input */
+  .quantity div {
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #002b5c;
+  }
+  .quantity i {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    border: 1px solid #002b5c;
+    color: #002b5c;
+    cursor: pointer;
+  }
+#addToBag{
+    height: 60px;
+}
+#buyOnline{
+    height: 60px;
+}
 
-
-
-@media only screen and (max-width: 1198px){
+@media only screen and (max-width: 1286px){
     .w-88{
         width:100%;
     }
@@ -39,11 +62,19 @@
         grid-template-columns: 1fr 1fr;
     }
 }
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 830px){
     .grid-2{
         grid-template-columns: 1fr;
     }
     .thumbnails{
         display: none;
+    }
+    .orderDetails div{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .dropdown > span{
+        background: none;
     }
 }

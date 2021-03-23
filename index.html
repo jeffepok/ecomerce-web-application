@@ -10,6 +10,9 @@
     <title>Jey Collections</title>
     <script src="jquery-3.6.0.js"></script>
     <script src="assets/scripts/select.js"></script>
+    <script src="assets/scripts/input.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 </head>
 <body class="margin-0">
     <div class="scaffold">
@@ -36,7 +39,7 @@
                 </div>
             </div>
             <div class="orderDetails">
-                <h1 class="text-navy-blue margin-0">Boys' Stillwater Sherpa 1/4-Zip</h1>
+                <div><h1 class="text-navy-blue margin-0">Boys' Stillwater Sherpa 1/4-Zip</h1></div>
                 <div>
                     <ul class="no-paddings flex margin-y-5">
                         <li class="paddings vertical-center"><img class="w-20" src="assets/img/star.svg" alt=""></li>
@@ -65,8 +68,10 @@
                         <li class="paddings vertical-center margin-x-5"><p class="margin-0">brown</p></li>
                     </ul>
                 </div>
-                <div class="sphere bg-navy-blue">
+                <div>
+                    <div class="sphere bg-navy-blue">
                     
+                    </div>
                 </div>
                 <div>
                     <ul class="no-paddings flex margin-y-8">
@@ -74,23 +79,92 @@
                         <li class="paddings vertical-center margin-x-5"><p class="margin-0">select a size</p></li>
                     </ul>
                 </div>
+                <div>
+                    <select class="dropdown bg-navy-blue">
+                        <option value="2T">2T</option>
+                        <option value="3T">3T</option>
+                        <option value="4T">4T</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="S">S</option>
+                        <option value="L" >L</option>
+                        <option value = "XL" >XL</option>
+                        <option value="M">M</option>
+                    </select>
+                </div>
 
-                <select class="dropdown bg-navy-blue">
-                    <option value="2T">2T</option>
-                    <option value="3T">3T</option>
-                    <option value="4T">4T</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="S">S</option>
-                    <option value="L" >L</option>
-                    <option value = "XL" >XL</option>
-                    <option value="M">M</option>
-                </select>
+                <div class="quantity margin-top-25 text-navy-blue flex">
+                    <i id="min" class="fa fa-minus"></i>
+                    <div id="change" class="num" contenteditable = "true" > 1 </div>
+
+                    <i id="plu" class="fa fa-plus"></i>
+                </div>
+                <div id="addToBag" class="pointer vertical-center bg-navy-blue text-white margin-top-25">
+                    <p class="margin-0 center-text text-xl text-bold">ADD TO BAG</p>
+                </div>
+                <div id="buyOnline" class="pointer border-navy-blue vertical-center text-navy-blue margin-top-25">
+                    <p class="margin-0 center-text text-xl text-bold">Buy online</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-light-grey text-navy-blue w-full paddings-m margin-0">
+            <div class="grid-2">
+                <div>
+                    <div>THE DETAILS</div>
+                    <div>STYLE <span>38347382</span></div>
+                    <div class="margin-top-25">Our Sherpa Fleece features a stretch fabric 
+                        that’s brushed on both sides for optimal warmth 
+                        without added weight. From the backyard to the playground, 
+                        class to recess, this'll keep your little guy cozy, 
+                        warm and looking sharp.
+                    </div>
+                </div>
+                <div>
+                    <div>FABRIC</div>
+                    <div>100% cotton</div>
+                    <div class="margin-top-25">FEATUERS</div>
+                    <div>
+                        <span>- Feature one</span>
+                    </div>
+                    <div class="margin-top-25">CARE INSTRUCTIONS</div>
+                    <div>
+                        <span>- Instruction one</span>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="footer"></div>
+        <div class="footer bg-light-grey margin-top-25 paddings-m">
+            <div class="footer-wrapper">
+                <div class="blocks">
+                    <div  class = "heading no-margin">CERTIFICATIONS</div>
+                    <a href="" class="footer-link">
+                        <div class="desc">
+                            <img src="assets/img/certifications.png" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="blocks">
+                    <div  class = "heading no-margin">HELP CENTER</div>
+                    <a href="#" class="footer-link text-sm">Payment Services</a>
+                    <a href="#" class="footer-link text-sm">Online Security</a>
+                    <a href="#" class="footer-link text-sm">Frequently Asked Questions</a>
+
+                </div>
+                <div class="blocks">
+                    <div  class = "heading no-margin" >QUICK LINKS</div>
+                    <a href="#" class="footer-link text-sm">E-banking</a>
+                    <a href="#" class="footer-link text-sm">Card Producs</a>
+                    <a href="#" class="footer-link text-sm">Branch Information</a>
+
+                </div>
+            </div>
+            <hr id="horizontal">
+            <div class="copyright">
+                <div class="left">© 2021 Jey Bank(International) Limited. All rights reserved.</div>
+            </div>
+        </div>
     </div>
     
 </body>
