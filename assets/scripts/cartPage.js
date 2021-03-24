@@ -132,6 +132,7 @@ $(document).ready(function(){
     function updateDiscount(){
         $discount.text("50%")
         $cartPrice.text(`$${calcDiscount()}`);
+        localStorage.setItem('discount', calcDiscount());
     }
 
 })
