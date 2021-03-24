@@ -5,7 +5,12 @@ $(document).ready(function(){
     let $subTotal = $("#subTotal");
     let $discountCode = $("#discountCode");
     let $discount = $("#discount");
-    localStorage.setItem('subTotal', parseFloat(localStorage.getItem('totalPrice')));
+    let $cartPage = $("#cartPage");
+    let $homePage = $("#homePage");
+    // $cartPage.toggleClass("current");
+    // $homePage.toggleClass("current");
+    
+    // localStorage.setItem('subTotal', parseFloat(localStorage.getItem('totalPrice')));
     $cartItems.html(fetchOrders());
 
     $apply.click(function(){
@@ -22,14 +27,13 @@ $(document).ready(function(){
         let inputs = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}inp`)
         inputs.forEach(input => {
             input.addEventListener("change", function(e){
-                console.log("changed");
                 let totalPrice = 0.0;
                 let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
                 let value = parseInt(e.target.value);
                 // remove item from local storage
                 for(var i=0; i < newOrders.length; i++){
                     totalPrice += parseInt(value) * parseFloat(order[i].price);
-                    localStorage.setItem('totalPrice', totalPrice);
+                    localStorage.setItem('subTotal', totalPrice);
                 }
                 updateTotalPrice();
                 })               
@@ -45,7 +49,10 @@ $(document).ready(function(){
                 localStorage.setItem('orderDetails', JSON.stringify(newOrders));
                 for(var i=0; i < newOrders.length; i++){
                     totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-                    localStorage.setItem('totalPrice', totalPrice);
+                    localStorage.setItem('subTotal', totalPrice);
+                }
+                if(newOrders.length == 0){
+                    localStorage.setItem('subTotal', 0);
                 }
                 updateTotalPrice();
                 })               
@@ -53,14 +60,14 @@ $(document).ready(function(){
 
             // calculate total price
         totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-        localStorage.setItem('totalPrice', totalPrice);
+        localStorage.setItem('subTotal', totalPrice);
         updateTotalPrice();
     }
 
 
 
     function calcDiscount(){
-        let total = parseFloat(localStorage.getItem('totalPrice')); 
+        let total = parseFloat(localStorage.getItem('subTotal')); 
         let discount = total - (total/2)
         return discount;
     }
@@ -100,22 +107,30 @@ $(document).ready(function(){
                     localStorage.setItem('orderDetails', JSON.stringify(newOrders));
                     for(var i=0; i < newOrders.length; i++){
                         totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-                        localStorage.setItem('totalPrice', totalPrice);
+                        localStorage.setItem('subTotal', totalPrice);
                     }
+                    if(newOrders.length == 0){
+                        localStorage.setItem('subTotal', 0);
+                    }
+                    var initialStockValue = parseInt(localStorage.getItem('stock'));
+                    var finalStockValue = initialStockValue + parseInt($('#quantityAmount').text());
+                    localStorage.setItem('stock', finalStockValue);
                     updateTotalPrice();
                     })               
             })
             // calculate total price
             totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-            localStorage.setItem('totalPrice', totalPrice);
+            localStorage.setItem('subTotal', totalPrice);
             updateTotalPrice();
         }
         return cartHtml;
     }
     function updateTotalPrice(){
         $subTotal.text(`$${localStorage.getItem('subTotal')}`);
+        $cartPrice.text(`$${localStorage.getItem('subTotal')}`)
     }
     function updateDiscount(){
+        $discount.text("50%")
         $cartPrice.text(`$${calcDiscount()}`);
     }
 

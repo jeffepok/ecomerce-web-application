@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="assets/styles/select.css">
     <title>Jey Collections</title>
     <script src="jquery-3.6.0.js"></script>
+    <script src="assets/scripts/traverseProducts.js"></script>
     <script src="assets/scripts/input.js"></script>
     <script src="assets/scripts/main.js"></script>
-    <script src="assets/scripts/traverseProducts.js"></script>
     <script src="assets/scripts/select.js"></script>
     <link rel="stylesheet" href="assets/styles/cartHeader.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -25,11 +25,11 @@
             <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
         <nav id="main-nav" class="">
             <ul class="margin-0">
-                <li><a class="text-navy-blue text-bold" href="#0">Home</a></li>
-                <li><a class="text-navy-blue text-bold" href="#0">About</a></li>
-                <li><a class="current text-navy-blue text-bold" href="#0">Services</a></li>
-                <li><a class="text-navy-blue text-bold" href="#0">Products</a></li>
-                <li><a class="text-navy-blue text-bold" href="#0">Contact</a></li>
+                <li><a class="text-navy-blue text-bold" href="index.html">Home</a></li>
+                <li><a class="text-navy-blue text-bold" href="#">About</a></li>
+                <li><a class="text-navy-blue text-bold" href="#">Services</a></li>
+                <li><a id="homePage" class="text-navy-blue text-bold" href="cartPage.html">Cart</a></li>
+                <li><a class="text-navy-blue text-bold" href="#">Contact</a></li>
             </ul>
         </nav>
         </header>
@@ -81,7 +81,7 @@
                     </div>
                     <div>
                         <ul class="no-paddings flex margin-y-8">
-                            <li class="paddings vertical-center uppercase text-dark-pink margin-x-5"><p id="price" class="text-bold margin-0">170</p></li>
+                            <li class="paddings vertical-center uppercase text-dark-pink margin-x-5"><span>$</span><p id="price" class="text-bold margin-0">170</p></li>
                             <li class="paddings vertical-center"><p class="text-normal margin-0 strikethrough">$150</p></li>
                         </ul>
                     </div>
@@ -114,7 +114,7 @@
 
                     <div>
                         <ul class="no-paddings flex margin-y-8">
-                            <li class="paddings vertical-center margin-x-5"><p id="stock" class="text-dark-grey text-bold margin-0">1</p></li>
+                            <li class="paddings vertical-center margin-x-5"><p id="stock" class="text-dark-grey text-bold margin-0">5</p></li>
                             <li class="paddings vertical-center margin-x-5"><p class="margin-0">in stock</p></li>
                         </ul>
                     </div>
@@ -196,19 +196,19 @@
             <ul id="cartItems" class="cd-cart-items">
                 <li>
                     <div class="text-dark-grey text-bold"><span id="cart-productName">Gold Button Cardigan, Black</span></div>
-                    <div class="cd-price">Price: <span id="cart-price">$1</span></div>
-                    <div class="cd-price">Quantity: <span id="cart-quantity">$1</span></div>
-                    <div class="cd-price">Size: <span id="cart-size">$1</span></div>
-                    <div class="cd-price">Color: <span id="cart-color">$1</span></div>
+                    <div class="cd-price">Price: <span id="cart-price">$0.00</span></div>
+                    <div class="cd-price">Quantity: <span id="cart-quantity">0</span></div>
+                    <div class="cd-price">Size: <span id="cart-size"></span></div>
+                    <div class="cd-price">Color: <span id="cart-color"></span></div>
                     <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
                 </li>
             </ul> <!-- cd-cart-items -->
     
             <div class="cd-cart-total">
-                <p>Total <span id="total">$39.96</span></p>
+                <p>Total <span id="total">$0.00</span></p>
             </div> <!-- cd-cart-total -->
     
-            <a href="#0" class="checkout-btn text-align-center bg-navy-blue w-full text-white text-bold">Checkout</a>
+            <a href="checkoutPage.html" class="checkout-btn text-align-center bg-navy-blue w-full text-white text-bold">Checkout</a>
             
             <p class="cd-go-to-cart"><a href="cartPage.html">Go to cart page</a></p>
         </div> <!-- cd-cart -->

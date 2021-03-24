@@ -35,11 +35,9 @@ $(document).ready(function(){
             // Get the product name from local storage
             let productName = productInfo.name;
             let price = productInfo.price;
-            let stock = productInfo.stock;
             // set
             $productName.text(productName);
             $price.text(price);
-            $stock.text(stock);
         }
 
     }

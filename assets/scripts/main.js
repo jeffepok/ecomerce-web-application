@@ -4,26 +4,29 @@ $(document).ready(function(){
     let $price = $('#price');
     let $size = $('#size');
     let $color = $('#color');
-
-    let $cartItems = $("#cartItems");
-    let $cartProductName = $('#cart-productName');
-    let $cartPrice = $('#total');
-    let $cartSize = $('#cart-size');
-    let $cartColor = $('#cart-color');
-    let $cartQuantity = $("#cart-quantity");
     let $stock = $('#stock');
+    let $cartItems = $("#cartItems");
+    let $cartPrice = $('#total');
     let $addToBag = $('#addToBag');
-    let $next = $('#next');
     let $increase = $("#increase");
     let $decrease = $("#decrease");
     let $quantity = $("#quantityAmount");
-    // initialize
-    $quantity.text("1");
-    var numberOfItems;
-    // if(localStorage.getItem('totalPrice') == null){
-    //     localStorage.setItem('totalPrice', "0");
-    // }
+    let $homePage = $("#homePage");
+    let $cartPage = $("#cartPage");
 
+    // initialize
+    $quantity.text($stock.text());
+    var numberOfItems;
+    var stockValue
+    console.log(!$.isNumeric(localStorage.getItem('stock')))
+    if(!$.isNumeric(localStorage.getItem('stock'))){
+        console.log($stock.text());
+        stockValue = parseInt($stock.text());
+        localStorage.setItem('stock', stockValue);
+    }
+    else{
+        stockValue = parseInt(localStorage.getItem('stock'));
+    }
     if(localStorage.getItem('numberOfItems') == null){
         numberOfItems = 0;
     }
@@ -31,7 +34,7 @@ $(document).ready(function(){
         numberOfItems = localStorage.getItem('numberOfItems');
     }
     // declare function to increase quantity
-    updateQuantity($increase, $decrease, $quantity);
+    updateQuantity($increase, $decrease, $quantity, $stock);
 
 
 
@@ -49,7 +52,11 @@ $hamburger_icon.on('click', function(event){
     $lateral_cart.removeClass('speed-in');
     toggle_panel_visibility($menu_navigation, $shadow_layer, $('body'));
 });
-
+$quantity.on("keypress keyup",function(){
+    if($(this).text() == '0'){
+      $(this).text('');  
+    }
+});
 //open cart
 $cart_trigger.on('click', function(event){
     event.preventDefault();
@@ -59,12 +66,12 @@ $cart_trigger.on('click', function(event){
     toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
     $cartItems.html(fetchOrders());
     let order = JSON.parse(localStorage.getItem('orderDetails'));
-    let totalPrice = 0.0;
+    let subTotal = 0.0;
     for(var i =0; i < order.length; i++){
         let anchors = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}`)
         anchors.forEach(anchor => {
             anchor.addEventListener("click", function(e){
-                let totalPrice = 0.0;
+                let subTotal = 0.0;
                 let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
                 e.currentTarget.parentNode.remove();
                 let id = parseInt(e.target.id);
@@ -72,27 +79,45 @@ $cart_trigger.on('click', function(event){
                 newOrders = newOrders.filter(order => order.id != id);
                 localStorage.setItem('orderDetails', JSON.stringify(newOrders));
                 for(var i=0; i < newOrders.length; i++){
-                    totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-                    localStorage.setItem('totalPrice', totalPrice);
+                    subTotal += parseInt(order[i].quantity) * parseFloat(order[i].price);
+                    localStorage.setItem('subTotal', subTotal);
                 }
-                updateTotalPrice();
+                if(newOrders.length == 0){
+                    localStorage.setItem('subTotal', 0);
+                }
+                updatesubTotal();
                 })               
         })
 
             // calculate total price
-        totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-        localStorage.setItem('totalPrice', totalPrice);
-        updateTotalPrice();
+        subTotal += parseInt(order[i].quantity) * parseFloat(order[i].price);
+        localStorage.setItem('subTotal', subTotal);
+        updatesubTotal();
     }
 
 });
 $addToBag.on('click', function(event){
-    event.preventDefault();
-    setDetails();
-    //close lateral menu (if it's open)
-    $menu_navigation.removeClass('speed-in');
-    toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
-    fetchOrders();
+    console.log(parseInt($('#quantityAmount').text()));
+    if($.isNumeric($('#quantityAmount').text())){
+        if(parseInt($('#quantityAmount').text()) <= parseInt(localStorage.getItem('stock'))){
+            event.preventDefault();
+            $menu_navigation.removeClass('speed-in');
+            toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
+            // if it is a number
+            setDetails();
+            fetchOrders();
+            var initialStockValue = parseInt(localStorage.getItem('stock'));
+            var finalStockValue = initialStockValue - parseInt($('#quantityAmount').text());
+            localStorage.setItem('stock', finalStockValue);
+        }else{
+            alert("Stock less than requested quantity");
+        }
+
+    }
+    else{
+        alert("Please type in quantity")
+    }
+    
 });
 
 function setDetails(){
@@ -104,6 +129,7 @@ function setDetails(){
         size: $size.val(),
         color: $color.val(),
         id: numberOfItems,
+        stock: $stock.text()
     }
     var initialOrder;
     orderDetails = [details]
@@ -138,12 +164,12 @@ function fetchOrders(){
             `
     }
     // add event listeners to anchor tags
-    let totalPrice = 0;
+    let subTotal = 0;
     for(var i =0; i < order.length; i++){
         let anchors = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}`)
         anchors.forEach(anchor => {
             anchor.addEventListener("click", function(e){
-                let totalPrice = 0;
+                let subTotal = 0;
                 let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
                 e.currentTarget.parentNode.remove();
                 let id = parseInt(e.target.id);
@@ -151,22 +177,29 @@ function fetchOrders(){
                 newOrders = newOrders.filter(order => order.id != id);
                 localStorage.setItem('orderDetails', JSON.stringify(newOrders));
                 for(var i=0; i < newOrders.length; i++){
-                    totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-                    localStorage.setItem('totalPrice', totalPrice);
+                    subTotal += parseInt(order[i].quantity) * parseFloat(order[i].price);
+                    localStorage.setItem('subTotal', subTotal);
                 }
-                updateTotalPrice();
+                if(newOrders.length == 0){
+                    localStorage.setItem('subTotal', 0);
+                }
+                var initialStockValue = parseInt(localStorage.getItem('stock'));
+                console.log(order[i])
+                var finalStockValue = parseInt(order[i].quantity) + initialStockValue;
+                console.log(finalStockValue)
+                localStorage.setItem('stock', finalStockValue);
+                updatesubTotal();
                 })               
         })
         // calculate total price
-        totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
-        console.log(order[i].price)
-        localStorage.setItem('totalPrice', totalPrice);
-        updateTotalPrice();
+        subTotal += parseInt(order[i].quantity) * parseFloat(order[i].price);
+        localStorage.setItem('subTotal', subTotal);
+        updatesubTotal();
     }
     return cartHtml;
 }
-function updateTotalPrice(){
-    $cartPrice.text(`$${localStorage.getItem('totalPrice')}`);
+function updatesubTotal(){
+    $cartPrice.text(`$${localStorage.getItem('subTotal')}`);
 }
 
 
@@ -228,25 +261,23 @@ function move_navigation( $navigation, $MQ) {
 		$navigation.insertAfter('header');
 	}
 }
-function updateQuantity($increase, $decrease, $quantity){
+function updateQuantity($increase, $decrease, $quantity, $stock){
     $increase.click(function(){
         // update quantity
         // parse initial value to int
         if($quantity.text()=="") $quantity.text(0);
         let initialValue = parseInt($quantity.text());
         // set the quantity
-        $quantity.text(initialValue + 1);
+        if((initialValue + 1) <= parseInt($stock.text())){
+            $quantity.text(initialValue + 1);
+        }
     });
     $decrease.click(function(){
         // update quantity
         // parse initial value to int
         let initialValue = parseInt($quantity.text());
         // set the quantity
-        if(initialValue > 0) $quantity.text(initialValue - 1);
+        if(initialValue > 1) $quantity.text(initialValue - 1);
     });
-}
-
-function addToCart(){
-
 }
 
