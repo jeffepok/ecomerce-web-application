@@ -117,6 +117,9 @@ body{
 }
 
 /* Alignments */
+.overflow-x-hidden{
+    overflow-x: hidden;
+}
 .float-right{
     float: right;
 }

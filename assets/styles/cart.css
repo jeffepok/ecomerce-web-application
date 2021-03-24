@@ -174,15 +174,11 @@
   }
   
   #cd-cart {
-    right: -100%;
+    right: 36%;
     background: #FFF;
-    -webkit-transition: right 0.3s;
-    -moz-transition: right 0.3s;
-    transition: right 0.3s;
+
   }
-  #cd-cart.speed-in {
-    right: 0;
-  }
+
   #cd-cart > * {
     padding: 0 1em;
   }

@@ -18,8 +18,12 @@ $(document).ready(function(){
     let $decrease = $("#decrease");
     let $quantity = $("#quantityAmount");
     // initialize
-    $quantity.text("0");
+    $quantity.text("1");
     var numberOfItems;
+    // if(localStorage.getItem('totalPrice') == null){
+    //     localStorage.setItem('totalPrice', "0");
+    // }
+
     if(localStorage.getItem('numberOfItems') == null){
         numberOfItems = 0;
     }
@@ -49,10 +53,38 @@ $hamburger_icon.on('click', function(event){
 //open cart
 $cart_trigger.on('click', function(event){
     event.preventDefault();
-    setDetails();
+
     //close lateral menu (if it's open)
     $menu_navigation.removeClass('speed-in');
     toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
+    $cartItems.html(fetchOrders());
+    let order = JSON.parse(localStorage.getItem('orderDetails'));
+    let totalPrice = 0.0;
+    for(var i =0; i < order.length; i++){
+        let anchors = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}`)
+        anchors.forEach(anchor => {
+            anchor.addEventListener("click", function(e){
+                let totalPrice = 0.0;
+                let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
+                e.currentTarget.parentNode.remove();
+                let id = parseInt(e.target.id);
+                // remove item from local storage
+                newOrders = newOrders.filter(order => order.id != id);
+                localStorage.setItem('orderDetails', JSON.stringify(newOrders));
+                for(var i=0; i < newOrders.length; i++){
+                    totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
+                    localStorage.setItem('totalPrice', totalPrice);
+                }
+                updateTotalPrice();
+                })               
+        })
+
+            // calculate total price
+        totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
+        localStorage.setItem('totalPrice', totalPrice);
+        updateTotalPrice();
+    }
+
 });
 $addToBag.on('click', function(event){
     event.preventDefault();
@@ -71,7 +103,7 @@ function setDetails(){
         quantity: $quantity.text(),
         size: $size.val(),
         color: $color.val(),
-        id: numberOfItems 
+        id: numberOfItems,
     }
     var initialOrder;
     orderDetails = [details]
@@ -106,12 +138,12 @@ function fetchOrders(){
             `
     }
     // add event listeners to anchor tags
-    let totalPrice = 0.0;
+    let totalPrice = 0;
     for(var i =0; i < order.length; i++){
         let anchors = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}`)
         anchors.forEach(anchor => {
             anchor.addEventListener("click", function(e){
-                let totalPrice = 0.0;
+                let totalPrice = 0;
                 let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
                 e.currentTarget.parentNode.remove();
                 let id = parseInt(e.target.id);
@@ -119,30 +151,24 @@ function fetchOrders(){
                 newOrders = newOrders.filter(order => order.id != id);
                 localStorage.setItem('orderDetails', JSON.stringify(newOrders));
                 for(var i=0; i < newOrders.length; i++){
-                    totalPrice += parseFloat(newOrders[i].price);
+                    totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
                     localStorage.setItem('totalPrice', totalPrice);
                 }
                 updateTotalPrice();
                 })               
         })
         // calculate total price
-        totalPrice += parseFloat(order[i].price);
+        totalPrice += parseInt(order[i].quantity) * parseFloat(order[i].price);
+        console.log(order[i].price)
         localStorage.setItem('totalPrice', totalPrice);
         updateTotalPrice();
     }
-    
-    
-    
-
     return cartHtml;
 }
 function updateTotalPrice(){
     $cartPrice.text(`$${localStorage.getItem('totalPrice')}`);
 }
 
-function removeOrders(){
-
-}
 
 //close lateral cart or lateral menu
 $shadow_layer.on('click', function(){
