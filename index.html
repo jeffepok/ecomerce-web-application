@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="assets/styles/select.css">
     <title>Jey Collections</title>
     <script src="jquery-3.6.0.js"></script>
-    <script src="assets/scripts/select.js"></script>
     <script src="assets/scripts/input.js"></script>
     <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/traverseProducts.js"></script>
+    <script src="assets/scripts/select.js"></script>
     <link rel="stylesheet" href="assets/styles/cartHeader.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
@@ -32,7 +33,10 @@
             </ul>
         </nav>
         </header>
-        
+
+            <div id="next" class="pointer text-bold margin-top-lg bg-navy-blue text-white vertical-center">
+                NEXT PRODUCT IN CATALOG
+            </div>
 
         <div class="margin-top-lg">
             <div class="productAreaContainer grid-2">
@@ -58,7 +62,7 @@
     
                 </div>
                 <div class="orderDetails">
-                    <div><h1 class="text-navy-blue margin-0">Boys' Stillwater Sherpa 1/4-Zip</h1></div>
+                    <div><h1 id="productName" class="text-navy-blue margin-0">Boys' Stillwater Sherpa 1/4-Zip</h1></div>
                     <div>
                         <ul class="no-paddings flex margin-y-5">
                             <li class="paddings vertical-center"><img class="w-20" src="assets/img/star.svg" alt=""></li>
@@ -77,40 +81,42 @@
                     </div>
                     <div>
                         <ul class="no-paddings flex margin-y-8">
-                            <li class="paddings vertical-center uppercase text-dark-pink margin-x-5"><p class="text-bold margin-0">$170</p></li>
+                            <li class="paddings vertical-center uppercase text-dark-pink margin-x-5"><p id="price" class="text-bold margin-0">$170</p></li>
                             <li class="paddings vertical-center"><p class="text-normal margin-0 strikethrough">$150</p></li>
                         </ul>
                     </div>
                     <div>
                         <ul class="no-paddings flex margin-y-8">
                             <li class="paddings vertical-center margin-x-5"><p class="text-dark-grey text-bold margin-0">Color:</p></li>
-                            <li class="paddings vertical-center margin-x-5"><p class="margin-0">brown</p></li>
+                            <li class="paddings vertical-center margin-x-5"><p class="margin-0">Select a color</p></li>
                         </ul>
                     </div>
                     <div>
-                        <div class="sphere bg-navy-blue">
-                        
-                        </div>
+                        <select id="color" class="dropdown bg-navy-blue">
+                            <option value="brown">black</option>
+                            <option value="black">brown</option>
+                            
+                        </select>
                     </div>
                     <div>
                         <ul class="no-paddings flex margin-y-8">
-                            <li class="paddings vertical-center margin-x-5"><p class="text-dark-grey text-bold margin-0">Size:</p></li>
+                            <li class="paddings vertical-center margin-x-5"><p  class="text-dark-grey text-bold margin-0">Size:</p></li>
                             <li class="paddings vertical-center margin-x-5"><p class="margin-0">select a size</p></li>
                         </ul>
                     </div>
                     <div>
-                        <select class="dropdown bg-navy-blue">
-                            <option value="2T">2T</option>
-                            <option value="3T">3T</option>
-                            <option value="4T">4T</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="S">S</option>
-                            <option value="L" >L</option>
-                            <option value = "XL" >XL</option>
-                            <option value="M">M</option>
+                        <select id="size" class="dropdown bg-navy-blue">
+                            <option value="2T">small</option>
+                            <option value="3T">medium</option>
+                            <option value="4T">large</option>
                         </select>
+                    </div>
+
+                    <div>
+                        <ul class="no-paddings flex margin-y-8">
+                            <li class="paddings vertical-center margin-x-5"><p id="stock" class="text-dark-grey text-bold margin-0">1</p></li>
+                            <li class="paddings vertical-center margin-x-5"><p class="margin-0">in stock</p></li>
+                        </ul>
                     </div>
     
                     <div class="quantity margin-top-25 text-navy-blue flex">
@@ -159,9 +165,7 @@
                     <div class="blocks">
                         <div  class = "heading no-margin">CERTIFICATIONS</div>
                         <a href="" class="footer-link">
-                            <div class="desc">
-                                <img src="assets/img/certifications.png" alt="">
-                            </div>
+
                         </a>
                     </div>
                     <div class="blocks">
@@ -189,28 +193,19 @@
 
         <div id="cd-cart">
             <h2>Cart</h2>
-            <ul class="cd-cart-items">
+            <ul id="cartItems" class="cd-cart-items">
                 <li>
-                    <span class="cd-qty">1x</span> Product Name
-                    <div class="cd-price">$9.99</div>
-                    <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-                </li>
-    
-                <li>
-                    <span class="cd-qty">2x</span> Product Name
-                    <div class="cd-price">$19.98</div>
-                    <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-                </li>
-    
-                <li>
-                    <span class="cd-qty">1x</span> Product Name
-                    <div class="cd-price">$9.99</div>
+                    <div class="text-dark-grey text-bold"><span id="cart-productName">Gold Button Cardigan, Black</span></div>
+                    <div class="cd-price">Price: <span id="cart-price">$1</span></div>
+                    <div class="cd-price">Quantity: <span id="cart-quantity">$1</span></div>
+                    <div class="cd-price">Size: <span id="cart-size">$1</span></div>
+                    <div class="cd-price">Color: <span id="cart-color">$1</span></div>
                     <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
                 </li>
             </ul> <!-- cd-cart-items -->
     
             <div class="cd-cart-total">
-                <p>Total <span>$39.96</span></p>
+                <p>Total <span id="total">$39.96</span></p>
             </div> <!-- cd-cart-total -->
     
             <a href="#0" class="checkout-btn text-align-center bg-navy-blue w-full text-white text-bold">Checkout</a>
@@ -219,5 +214,6 @@
         </div> <!-- cd-cart -->
     </div>
     <script src="assets/scripts/slides.js"></script>
+    
 </body>
 </html>

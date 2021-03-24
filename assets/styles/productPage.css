@@ -25,7 +25,15 @@ header {
       height: 80px;
     }
   }
-
+#next{
+  height:60px;
+  max-width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+}
+#next:hover{
+  background-color: #20acc5;
+}
 
 .productAreaContainer{
     margin: 200px auto;

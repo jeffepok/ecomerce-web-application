@@ -1,0 +1,104 @@
+{ "products": [
+    {
+        "id": 1,
+        "name": "Almond Toe Court Shoes, Patent Black",
+        "category": "Womens Footwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "120.00",
+        "price": 99.00,
+        "stock": 5,
+        "url": "assets/img/"
+    },
+    {
+        "id": 2,
+        "name": "Suede Shoes, Blue",
+        "category": "Womens Footwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "50.00",
+        "price": 42.00,
+        "stock": 4,
+        "url": "assets/img/"
+    },
+    {
+        "id": 3,
+        "name": "Leather Driver Saddle Loafers, Tan",
+        "category": "Mens Footwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "60.00",
+        "price": 34.00,
+        "stock": 12,
+        "url": "assets/img/"
+    },
+    {
+        "id": 4,
+        "name": "Flip Flops, Red",
+        "category": "Mens Footwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "22.00",
+        "price": 19.00,
+        "stock": 6,
+        "url": "assets/img/"
+    },
+    {
+        "id": 5,
+        "name": "Flip Flops, Blue",
+        "category": "Mens Footwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "22.00",
+        "price": 19.00,
+        "stock": 0,
+        "url": "assets/img/"
+    },
+    {
+        "id": 6,
+        "name": "Gold Button Cardigan, Black",
+        "category": "Womens Casualwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "200.00",
+        "price": 167.00,
+        "stock": 6,
+        "url": "assets/img/"
+    },
+    {
+        "id": 7,
+        "name": "Cotton Shorts, Medium Red",
+        "category": "Womens Casualwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "40.00",
+        "price": 30.00,
+        "stock": 5,
+        "url": "assets/img/"
+    },
+    {
+        "id": 8,
+        "name": "Fine Stripe Short Sleeve Shirt, Grey",
+        "category": "Mens Casualwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "60.00",
+        "price": 49.99,
+        "stock": 9,
+        "url": "assets/img/"
+    },
+    {
+        "id": 9,
+        "name": "Fine Stripe Short Sleeve Shirt, Green",
+        "category": "Mens Casualwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "60.00",
+        "price": 49.99,
+        "offer": 39.99,
+        "stock": 9,
+        "url": "assets/img/"
+    },
+    {
+        "id": 10,
+        "name": "Sharkskin Waistcoat, Charcoal",
+        "category": "Mens Formalwear",
+        "colors": ["black", "brown"],
+        "originalPrice": "80.00",
+        "price": 75.00,
+        "stock": 2,
+        "url": "assets/img/"
+    }
+]
+}
