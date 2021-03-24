@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     let $cartItems = $("#cartItems");
     let $cartProductName = $('#cart-productName');
-    let $cartPrice = $('#cart-price');
+    let $cartPrice = $('#total');
     let $cartSize = $('#cart-size');
     let $cartColor = $('#cart-color');
     let $cartQuantity = $("#cart-quantity");
@@ -19,6 +19,13 @@ $(document).ready(function(){
     let $quantity = $("#quantityAmount");
     // initialize
     $quantity.text("0");
+    var numberOfItems;
+    if(localStorage.getItem('numberOfItems') == null){
+        numberOfItems = 0;
+    }
+    else{
+        numberOfItems = localStorage.getItem('numberOfItems');
+    }
     // declare function to increase quantity
     updateQuantity($increase, $decrease, $quantity);
 
@@ -53,15 +60,18 @@ $addToBag.on('click', function(event){
     //close lateral menu (if it's open)
     $menu_navigation.removeClass('speed-in');
     toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
+    fetchOrders();
 });
 
 function setDetails(){
+    numberOfItems +=1;
     details = {
         productName: $productName.text(),
         price: $price.text(),
         quantity: $quantity.text(),
         size: $size.val(),
-        color: $color.val(), 
+        color: $color.val(),
+        id: numberOfItems 
     }
     var initialOrder;
     orderDetails = [details]
@@ -74,44 +84,64 @@ function setDetails(){
     else {
         localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
     }
+
+
+    $cartItems.html(fetchOrders());
+}
+function fetchOrders(){
     let order = JSON.parse(localStorage.getItem('orderDetails'));
     let cartHtml = "";
     for(var i =0; i < order.length; i++){
         cartHtml +=
             `
-            <li>
+            <li id="${order[i].productName.toLowerCase().split(" ")[0]}id" class= "${order[i].productName.toLowerCase().split(" ")[0] + 'item'}">
             <div class="text-dark-grey text-bold"><span id="cart-productName">${order[i].productName}</span></div>
             <div class="cd-price">Price: <span id="cart-price">${order[i].price}</span></div>
             <div class="cd-price">Quantity: <span id="cart-quantity">${order[i].quantity}</span></div>
             <div class="cd-price">Size: <span id="cart-size">${order[i].size}</span></div>
             <div class="cd-price">Color: <span id="cart-color">${order[i].color}</span></div>
-            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+            <a href="#0" id = "${order[i].id}" class="${order[i].productName.toLowerCase().split(" ")[0]} cd-item-remove cd-img-replace">Remove</a>
             </li>
 
             `
     }
-
-    $cartItems.html(cartHtml)
+    // add event listeners to anchor tags
+    let totalPrice = 0.0;
+    for(var i =0; i < order.length; i++){
+        let anchors = document.querySelectorAll(`.${order[i].productName.toLowerCase().split(" ")[0]}`)
+        anchors.forEach(anchor => {
+            anchor.addEventListener("click", function(e){
+                let totalPrice = 0.0;
+                let newOrders = JSON.parse(localStorage.getItem('orderDetails'));
+                e.currentTarget.parentNode.remove();
+                let id = parseInt(e.target.id);
+                // remove item from local storage
+                newOrders = newOrders.filter(order => order.id != id);
+                localStorage.setItem('orderDetails', JSON.stringify(newOrders));
+                for(var i=0; i < newOrders.length; i++){
+                    totalPrice += parseFloat(newOrders[i].price);
+                    localStorage.setItem('totalPrice', totalPrice);
+                }
+                updateTotalPrice();
+                })               
+        })
+        // calculate total price
+        totalPrice += parseFloat(order[i].price);
+        localStorage.setItem('totalPrice', totalPrice);
+        updateTotalPrice();
+    }
+    
+    
     
 
-    console.log(cartHtml);
-        // cartHtml.concat(
-        //     `
-        //     <li>
-        //     <div class="text-dark-grey text-bold"><span id="cart-productName">${o.productName}</span></div>
-        //     <div class="cd-price">Price: <span id="cart-price">${o.price}</span></div>
-        //     <div class="cd-price">Quantity: <span id="cart-quantity">${o.quantity}</span></div>
-        //     <div class="cd-price">Size: <span id="cart-size">${o.size}</span></div>
-        //     <div class="cd-price">Color: <span id="cart-color">${o.color}</span></div>
-        //     <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-        //     </li>
+    return cartHtml;
+}
+function updateTotalPrice(){
+    $cartPrice.text(`$${localStorage.getItem('totalPrice')}`);
+}
 
-        //     `)
+function removeOrders(){
 
-    // $cartPrice.text(order.price);
-    // $cartSize.text(order.size);
-    // $cartColor.text(order.color);
-    // $cartQuantity.text(order.quantity);
 }
 
 //close lateral cart or lateral menu
