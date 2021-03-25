@@ -7,17 +7,17 @@
         "originalPrice": "120.00",
         "price": 99.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Almond Toe Court Shoes, Patent Black"
     },
     {
         "id": 2,
-        "name": "Suede Shoes, Blue",
+        "name": "Suede Shoes, Black",
         "category": "Womens Footwear",
         "colors": ["black", "brown"],
         "originalPrice": "50.00",
         "price": 42.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Suede Shoes, Black"
     },
     {
         "id": 3,
@@ -27,7 +27,7 @@
         "originalPrice": "60.00",
         "price": 34.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Leather Driver Saddle Loafers, Tan"
     },
     {
         "id": 4,
@@ -37,7 +37,7 @@
         "originalPrice": "22.00",
         "price": 19.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Flip Flops, Red"
     },
     {
         "id": 5,
@@ -47,7 +47,7 @@
         "originalPrice": "22.00",
         "price": 19.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Flip Flops, Blue"
     },
     {
         "id": 6,
@@ -57,7 +57,7 @@
         "originalPrice": "200.00",
         "price": 167.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Gold Button Cardigan, Black"
     },
     {
         "id": 7,
@@ -67,7 +67,7 @@
         "originalPrice": "40.00",
         "price": 30.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Cotton Shorts, Medium Red"
     },
     {
         "id": 8,
@@ -77,7 +77,7 @@
         "originalPrice": "60.00",
         "price": 49.99,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Fine Stripe Short Sleeve Shirt, Grey"
     },
     {
         "id": 9,
@@ -88,7 +88,7 @@
         "price": 49.99,
         "offer": 39.99,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Fine Stripe Short Sleeve Shirt, Green"
     },
     {
         "id": 10,
@@ -98,7 +98,7 @@
         "originalPrice": "80.00",
         "price": 75.00,
         "stock": 5,
-        "url": "assets/img/"
+        "url": "assets/img/Sharkskin Waistcoat, Charcoal"
     }
 ]
 }

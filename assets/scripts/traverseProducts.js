@@ -2,6 +2,7 @@ $(document).ready(function(){
     let $productName = $('#productName');
     let $price = $('#price');
     let $next = $('#next');
+    let $imageContainer = $('#imageContainer');
     // set currentProduct in local storage
     if(localStorage.getItem('currentproduct') == null){
         localStorage.setItem('currentProduct', 1);
@@ -37,6 +38,7 @@ $(document).ready(function(){
             // set
             $productName.text(productName);
             $price.text(price);
+
         }
 
     }
@@ -60,7 +62,26 @@ $(document).ready(function(){
             // set
             $productName.text(productName);
             $price.text(price);
-           
+            $imageContainer.html(`
+            
+            <div class="slides float-right w-88">
+                <img class="w-full" src="${productInfo.url}.jpg" alt="">
+            </div>
+            <div class="slides float-right w-88">
+                <img class="w-full" src="${productInfo.url}2.jpg" alt="">
+            </div>
+            <div class="slides float-right w-88">
+                <img class="w-full" src="${productInfo.url}3.jpg" alt="">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="thumbnails">
+                <div class="float-left pointer"><img class="w-full" src=""${productInfo.url}.jpg" alt=""></div>
+                <div class="float-left pointer"><img class="w-full" src="${productInfo.url}2.jpg" alt=""></div>
+                <div class="float-left pointer"><img class="w-full" src="${productInfo.url}3.jpg" alt=""></div>
+            </div>
+            
+            `)
         })
 
     }
