@@ -57,7 +57,7 @@ function fetchOrders(){
 
     for(var i =0; i < order.length; i++){
         cartHtml +=
-            `<p><a id="productName" class="text-bold" href="#">${order[i].productName}</a> <span id="price" class="price">$${order[i].price}</span></p>
+            `<p><a id="productName" class="text-bold" href="#"><span>${order[i].quantity}&times</span> ${order[i].productName}</a> <span id="price" class="price">$${order[i].price}</span></p>
             `
     }
     // add event listeners to anchor tags
