@@ -87,7 +87,6 @@ $cart_trigger.on('click', function(event){
 
 });
 $addToBag.on('click', function(event){
-    console.log(parseInt($('#quantityAmount').text()));
     if($.isNumeric($('#quantityAmount').text())){
             event.preventDefault();
             $menu_navigation.removeClass('speed-in');

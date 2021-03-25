@@ -16,21 +16,25 @@ if(!$.isNumeric(localStorage.getItem('subTotal'))){
 if(!$.isNumeric(localStorage.getItem('discount'))){
     localStorage.setItem('discount', 0); 
 }
-discount = localStorage.getItem('discount');
+if(localStorage.getItem('discount') == 0){
+    discount = localStorage.getItem('subTotal')
+}else{
+    discount = localStorage.getItem('discount');
+}
+
 totalPrice.text(discount);
 // Get orders
 if(localStorage.getItem('orderDetails')!= null){
     orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
     orders.text(orderDetails.length);
+    cartItems.html(fetchOrders());
 }else{
     orders.text(0);
 }
 
-cartItems.html(fetchOrders());
-console.log(fetchOrders());
+
 
 checkoutBtn.click(function(){
-    console.log(localStorage.getItem('orderDetails'));
     if(localStorage.getItem('orderDetails')==null){
         alert("No item in cart");
     }
@@ -39,6 +43,7 @@ checkoutBtn.click(function(){
         localStorage.removeItem('orderDetails');
         localStorage.removeItem('discount');
         localStorage.removeItem('subTotal');
+        location.reload();
     }
 
 })
@@ -46,6 +51,7 @@ checkoutBtn.click(function(){
 function fetchOrders(){
     let order = JSON.parse(localStorage.getItem('orderDetails'));
     let cartHtml = "";
+
     for(var i =0; i < order.length; i++){
         cartHtml +=
             `<p><a id="productName" class="text-bold" href="#">${order[i].productName}</a> <span id="price" class="price">$${order[i].price}</span></p>
