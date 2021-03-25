@@ -35,7 +35,10 @@ if(localStorage.getItem('orderDetails')!= null){
 
 
 checkoutBtn.click(function(){
-    if(JSON.parse((localStorage.getItem('orderDetails'))).length < 1){
+    if(localStorage.getItem('orderDetails') == null){
+        alert("No item in cart");
+    }
+    else if(JSON.parse((localStorage.getItem('orderDetails'))).length < 1){
         alert("No item in cart");
     }
     else{
