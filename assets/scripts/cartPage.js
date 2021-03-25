@@ -79,7 +79,7 @@ $(document).ready(function(){
             cartHtml +=
                 `
                 <li  class= "${order[i].productName.toLowerCase().split(" ")[0] + 'item'}">
-                <div class="text-dark-grey text-bold"><span id="cart-productName">${order[i].productName}</span></div>
+                <a href="index.html"><div class="text-dark-grey text-bold"><span id="cart-productName">${order[i].productName}</span></div></a>
                 <div class="cd-price">Price: <span id="cart-price">${order[i].price}</span></div>
                 <div>
                 <label class="text-dark-grey">Quantity</label>
