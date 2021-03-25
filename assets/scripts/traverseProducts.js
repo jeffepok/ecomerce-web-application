@@ -1,7 +1,9 @@
 $(document).ready(function(){
+    
     let $productName = $('#productName');
     let $price = $('#price');
     let $next = $('#next');
+    let $originalPrice = $('#originalPrice');
     let $imageContainer = $('#imageContainer');
     // set currentProduct in local storage
     if(localStorage.getItem('currentproduct') == null){
@@ -62,9 +64,10 @@ $(document).ready(function(){
             // set
             $productName.text(productName);
             $price.text(price);
+            $originalPrice.text(productInfo.originalPrice)
             $imageContainer.html(`
-            
-            <div class="slides float-right w-88">
+    
+            <div style = "display: block;" class="slides float-right w-88">
                 <img class="w-full" src="${productInfo.url}.jpg" alt="">
             </div>
             <div class="slides float-right w-88">
@@ -85,5 +88,7 @@ $(document).ready(function(){
         })
 
     }
+
+    
         
 })

@@ -4,7 +4,7 @@
         "name": "Almond Toe Court Shoes, Patent Black",
         "category": "Womens Footwear",
         "colors": ["black", "brown"],
-        "originalPrice": "120.00",
+        "originalPrice": 120.00,
         "price": 99.00,
         "stock": 5,
         "url": "assets/img/Almond Toe Court Shoes, Patent Black"
@@ -14,7 +14,7 @@
         "name": "Suede Shoes, Black",
         "category": "Womens Footwear",
         "colors": ["black", "brown"],
-        "originalPrice": "50.00",
+        "originalPrice": 50.00,
         "price": 42.00,
         "stock": 5,
         "url": "assets/img/Suede Shoes, Black"
@@ -24,7 +24,7 @@
         "name": "Leather Driver Saddle Loafers, Tan",
         "category": "Mens Footwear",
         "colors": ["black", "brown"],
-        "originalPrice": "60.00",
+        "originalPrice": 60.00,
         "price": 34.00,
         "stock": 5,
         "url": "assets/img/Leather Driver Saddle Loafers, Tan"
@@ -34,7 +34,7 @@
         "name": "Flip Flops, Red",
         "category": "Mens Footwear",
         "colors": ["black", "brown"],
-        "originalPrice": "22.00",
+        "originalPrice": 22.00,
         "price": 19.00,
         "stock": 5,
         "url": "assets/img/Flip Flops, Red"
@@ -44,7 +44,7 @@
         "name": "Flip Flops, Blue",
         "category": "Mens Footwear",
         "colors": ["black", "brown"],
-        "originalPrice": "22.00",
+        "originalPrice": 22.00,
         "price": 19.00,
         "stock": 5,
         "url": "assets/img/Flip Flops, Blue"
@@ -54,7 +54,7 @@
         "name": "Gold Button Cardigan, Black",
         "category": "Womens Casualwear",
         "colors": ["black", "brown"],
-        "originalPrice": "200.00",
+        "originalPrice": 200.00,
         "price": 167.00,
         "stock": 5,
         "url": "assets/img/Gold Button Cardigan, Black"
@@ -64,7 +64,7 @@
         "name": "Cotton Shorts, Medium Red",
         "category": "Womens Casualwear",
         "colors": ["black", "brown"],
-        "originalPrice": "40.00",
+        "originalPrice": 40.00,
         "price": 30.00,
         "stock": 5,
         "url": "assets/img/Cotton Shorts, Medium Red"
@@ -74,7 +74,7 @@
         "name": "Fine Stripe Short Sleeve Shirt, Grey",
         "category": "Mens Casualwear",
         "colors": ["black", "brown"],
-        "originalPrice": "60.00",
+        "originalPrice": 60.00,
         "price": 49.99,
         "stock": 5,
         "url": "assets/img/Fine Stripe Short Sleeve Shirt, Grey"
@@ -84,9 +84,8 @@
         "name": "Fine Stripe Short Sleeve Shirt, Green",
         "category": "Mens Casualwear",
         "colors": ["black", "brown"],
-        "originalPrice": "60.00",
+        "originalPrice": 60.00,
         "price": 49.99,
-        "offer": 39.99,
         "stock": 5,
         "url": "assets/img/Fine Stripe Short Sleeve Shirt, Green"
     },
@@ -95,7 +94,7 @@
         "name": "Sharkskin Waistcoat, Charcoal",
         "category": "Mens Formalwear",
         "colors": ["black", "brown"],
-        "originalPrice": "80.00",
+        "originalPrice": 80.00,
         "price": 75.00,
         "stock": 5,
         "url": "assets/img/Sharkskin Waistcoat, Charcoal"
