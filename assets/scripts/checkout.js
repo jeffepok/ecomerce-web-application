@@ -6,19 +6,41 @@ let cartItems = $('#cartItems');
 var discount;
 let checkoutBtn = $('#checkout');
 
+
 if(!$.isNumeric(localStorage.getItem('discount'))){
     localStorage.setItem('discount', localStorage.getItem('subTotal')); 
 }
+if(!$.isNumeric(localStorage.getItem('subTotal'))){
+    localStorage.setItem('subTotal', 0); 
+}
+if(!$.isNumeric(localStorage.getItem('discount'))){
+    localStorage.setItem('discount', 0); 
+}
 discount = localStorage.getItem('discount');
-totalPrice.text(discount)
+totalPrice.text(discount);
 // Get orders
-orderDetails = JSON.parse(localStorage.getItem('orderDetails'))
-orders.text(orderDetails.length)
+if(localStorage.getItem('orderDetails')!= null){
+    orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+    orders.text(orderDetails.length);
+}else{
+    orders.text(0);
+}
+
 cartItems.html(fetchOrders());
 console.log(fetchOrders());
 
 checkoutBtn.click(function(){
-    alert(`Items shipped to ${$('#adr').val()}`)
+    console.log(localStorage.getItem('orderDetails'));
+    if(localStorage.getItem('orderDetails')==null){
+        alert("No item in cart");
+    }
+    else{
+        alert(`Items shipped to ${$('#adr').val()}`)
+        localStorage.removeItem('orderDetails');
+        localStorage.removeItem('discount');
+        localStorage.removeItem('subTotal');
+    }
+
 })
 
 function fetchOrders(){

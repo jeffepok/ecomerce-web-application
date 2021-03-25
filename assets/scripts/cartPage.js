@@ -112,9 +112,7 @@ $(document).ready(function(){
                     if(newOrders.length == 0){
                         localStorage.setItem('subTotal', 0);
                     }
-                    var initialStockValue = parseInt(localStorage.getItem('stock'));
-                    var finalStockValue = initialStockValue + parseInt($('#quantityAmount').text());
-                    localStorage.setItem('stock', finalStockValue);
+ 
                     updateTotalPrice();
                     })               
             })

@@ -1,7 +1,6 @@
 $(document).ready(function(){
     let $productName = $('#productName');
     let $price = $('#price');
-    let $stock = $('#stock');
     let $next = $('#next');
     // set currentProduct in local storage
     if(localStorage.getItem('currentproduct') == null){
@@ -57,11 +56,10 @@ $(document).ready(function(){
             // Get the product name from local storage
             let productName = productInfo.name;
             let price = productInfo.price;
-            let stock = productInfo.stock;
+ 
             // set
             $productName.text(productName);
             $price.text(price);
-            $stock.text(stock);
            
         })
 

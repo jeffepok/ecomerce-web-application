@@ -4,7 +4,6 @@ $(document).ready(function(){
     let $price = $('#price');
     let $size = $('#size');
     let $color = $('#color');
-    let $stock = $('#stock');
     let $cartItems = $("#cartItems");
     let $cartPrice = $('#total');
     let $addToBag = $('#addToBag');
@@ -15,18 +14,9 @@ $(document).ready(function(){
     let $cartPage = $("#cartPage");
 
     // initialize
-    $quantity.text($stock.text());
+    $quantity.text(1);
     var numberOfItems;
-    var stockValue
-    console.log(!$.isNumeric(localStorage.getItem('stock')))
-    if(!$.isNumeric(localStorage.getItem('stock'))){
-        console.log($stock.text());
-        stockValue = parseInt($stock.text());
-        localStorage.setItem('stock', stockValue);
-    }
-    else{
-        stockValue = parseInt(localStorage.getItem('stock'));
-    }
+
     if(localStorage.getItem('numberOfItems') == null){
         numberOfItems = 0;
     }
@@ -34,7 +24,7 @@ $(document).ready(function(){
         numberOfItems = localStorage.getItem('numberOfItems');
     }
     // declare function to increase quantity
-    updateQuantity($increase, $decrease, $quantity, $stock);
+    updateQuantity($increase, $decrease, $quantity);
 
 
 
@@ -99,20 +89,12 @@ $cart_trigger.on('click', function(event){
 $addToBag.on('click', function(event){
     console.log(parseInt($('#quantityAmount').text()));
     if($.isNumeric($('#quantityAmount').text())){
-        if(parseInt($('#quantityAmount').text()) <= parseInt(localStorage.getItem('stock'))){
             event.preventDefault();
             $menu_navigation.removeClass('speed-in');
             toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
             // if it is a number
             setDetails();
             fetchOrders();
-            var initialStockValue = parseInt(localStorage.getItem('stock'));
-            var finalStockValue = initialStockValue - parseInt($('#quantityAmount').text());
-            localStorage.setItem('stock', finalStockValue);
-        }else{
-            alert("Stock less than requested quantity");
-        }
-
     }
     else{
         alert("Please type in quantity")
@@ -129,7 +111,7 @@ function setDetails(){
         size: $size.val(),
         color: $color.val(),
         id: numberOfItems,
-        stock: $stock.text()
+
     }
     var initialOrder;
     orderDetails = [details]
@@ -183,11 +165,6 @@ function fetchOrders(){
                 if(newOrders.length == 0){
                     localStorage.setItem('subTotal', 0);
                 }
-                var initialStockValue = parseInt(localStorage.getItem('stock'));
-                console.log(order[i])
-                var finalStockValue = parseInt(order[i].quantity) + initialStockValue;
-                console.log(finalStockValue)
-                localStorage.setItem('stock', finalStockValue);
                 updatesubTotal();
                 })               
         })
@@ -261,16 +238,14 @@ function move_navigation( $navigation, $MQ) {
 		$navigation.insertAfter('header');
 	}
 }
-function updateQuantity($increase, $decrease, $quantity, $stock){
+function updateQuantity($increase, $decrease, $quantity){
     $increase.click(function(){
         // update quantity
         // parse initial value to int
         if($quantity.text()=="") $quantity.text(0);
         let initialValue = parseInt($quantity.text());
         // set the quantity
-        if((initialValue + 1) <= parseInt($stock.text())){
-            $quantity.text(initialValue + 1);
-        }
+        $quantity.text(initialValue + 1);
     });
     $decrease.click(function(){
         // update quantity
